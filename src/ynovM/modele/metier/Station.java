@@ -4,6 +4,8 @@
 package ynovM.modele.metier;
 
 import ynovM.stockage.*;
+import ynovM.utilitaire.EtatStation;
+import ynovM.utilitaire.TypeStation;
 
 /**
  * @author Rémy

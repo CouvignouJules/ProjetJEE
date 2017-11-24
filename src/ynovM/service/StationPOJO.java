@@ -12,8 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-import ynovM.stockage.EtatStation;
-import ynovM.stockage.TypeStation;
+import ynovM.utilitaire.EtatStation;
+import ynovM.utilitaire.TypeStation;
 
 
 /**

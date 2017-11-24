@@ -1,7 +1,7 @@
 /**
  * 
  */
-package ynovM.stockage;
+package ynovM.utilitaire;
 
 /**
  * @author Rémy
@@ -19,5 +19,5 @@ public enum Profile {
 	private Profile(int profile) {
 		Profile = profile;
 	}
-	
+
 }
