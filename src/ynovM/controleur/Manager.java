@@ -1,11 +1,14 @@
 package ynovM.controleur;
 
 import java.util.List;
+import java.util.Vector;
 
 import ynovM.modele.metier.Station;
+import ynovM.modele.technique.StationManagee;
 
-public class Manager {
-	private Manager instance;
+public final class Manager {
+	private static Manager instance = null;
+	private Vector<StationManagee> lesStations;
 	
 	public Manager() {
 		

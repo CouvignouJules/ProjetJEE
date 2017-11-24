@@ -2,7 +2,9 @@
  * 
  */
 package ynovM.modele.metier;
+
 import ynovM.stockage.*;
+
 /**
  * @author Rémy
  *
@@ -15,27 +17,21 @@ public class Station {
 	private String nom;
 	private String localisation;
 	private double temperature;
-	private String hygometrie;
+	private double hygometrie;
 	private int nebulosite;
 	private int anemometre;
 	private int pluviometrie;
 	private String remarques;
-	
+
 	private EtatStation etat;
 	private TypeStation type;
-	
-	
-	
-	
+
 	/**
 	 * 
 	 */
 	public Station() {
 		super();
 	}
-
-
-
 
 	/**
 	 * @param id
@@ -52,8 +48,8 @@ public class Station {
 	 * @param etat
 	 * @param type
 	 */
-	public Station(int id, int x, int y, String nom, String localisation, double temperature, String hygometrie,
-			int nebulosite, int anemometre, int pluviometrie, String remarques, EtatStation etat, TypeStation type) {
+	public Station(int id, int x, int y, String nom, String localisation, double temperature, double hygometrie,
+			int nebulosite, int anemometre, int pluviometrie, String remarques) {
 		super();
 		this.id = id;
 		this.x = x;
@@ -66,14 +62,13 @@ public class Station {
 		this.anemometre = anemometre;
 		this.pluviometrie = pluviometrie;
 		this.remarques = remarques;
-		this.etat = etat;
-		this.type = type;
+		this.etat = EtatStation.EN_MARCHE;
+		this.type = TypeStation.AUTONOME;
 	}
 
-
-
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -84,9 +79,6 @@ public class Station {
 				+ ", etat=" + etat + ", type=" + type + "]";
 	}
 
-
-
-
 	/**
 	 * @return the id
 	 */
@@ -94,18 +86,13 @@ public class Station {
 		return id;
 	}
 
-
-
-
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
-
-
-
 
 	/**
 	 * @return the x
@@ -114,18 +101,13 @@ public class Station {
 		return x;
 	}
 
-
-
-
 	/**
-	 * @param x the x to set
+	 * @param x
+	 *            the x to set
 	 */
 	public void setX(int x) {
 		this.x = x;
 	}
-
-
-
 
 	/**
 	 * @return the y
@@ -134,18 +116,13 @@ public class Station {
 		return y;
 	}
 
-
-
-
 	/**
-	 * @param y the y to set
+	 * @param y
+	 *            the y to set
 	 */
 	public void setY(int y) {
 		this.y = y;
 	}
-
-
-
 
 	/**
 	 * @return the nom
@@ -154,18 +131,13 @@ public class Station {
 		return nom;
 	}
 
-
-
-
 	/**
-	 * @param nom the nom to set
+	 * @param nom
+	 *            the nom to set
 	 */
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-
-
-
 
 	/**
 	 * @return the localisation
@@ -174,18 +146,13 @@ public class Station {
 		return localisation;
 	}
 
-
-
-
 	/**
-	 * @param localisation the localisation to set
+	 * @param localisation
+	 *            the localisation to set
 	 */
 	public void setLocalisation(String localisation) {
 		this.localisation = localisation;
 	}
-
-
-
 
 	/**
 	 * @return the temperature
@@ -194,38 +161,28 @@ public class Station {
 		return temperature;
 	}
 
-
-
-
 	/**
-	 * @param temperature the temperature to set
+	 * @param temperature
+	 *            the temperature to set
 	 */
 	public void setTemperature(double temperature) {
 		this.temperature = temperature;
 	}
 
-
-
-
 	/**
 	 * @return the hygometrie
 	 */
-	public String getHygometrie() {
+	public double getHygometrie() {
 		return hygometrie;
 	}
 
-
-
-
 	/**
-	 * @param hygometrie the hygometrie to set
+	 * @param hygometrie
+	 *            the hygometrie to set
 	 */
-	public void setHygometrie(String hygometrie) {
+	public void setHygometrie(double hygometrie) {
 		this.hygometrie = hygometrie;
 	}
-
-
-
 
 	/**
 	 * @return the nebulosite
@@ -234,18 +191,13 @@ public class Station {
 		return nebulosite;
 	}
 
-
-
-
 	/**
-	 * @param nebulosite the nebulosite to set
+	 * @param nebulosite
+	 *            the nebulosite to set
 	 */
 	public void setNebulosite(int nebulosite) {
 		this.nebulosite = nebulosite;
 	}
-
-
-
 
 	/**
 	 * @return the anemometre
@@ -254,18 +206,13 @@ public class Station {
 		return anemometre;
 	}
 
-
-
-
 	/**
-	 * @param anemometre the anemometre to set
+	 * @param anemometre
+	 *            the anemometre to set
 	 */
 	public void setAnemometre(int anemometre) {
 		this.anemometre = anemometre;
 	}
-
-
-
 
 	/**
 	 * @return the pluviometrie
@@ -274,18 +221,13 @@ public class Station {
 		return pluviometrie;
 	}
 
-
-
-
 	/**
-	 * @param pluviometrie the pluviometrie to set
+	 * @param pluviometrie
+	 *            the pluviometrie to set
 	 */
 	public void setPluviometrie(int pluviometrie) {
 		this.pluviometrie = pluviometrie;
 	}
-
-
-
 
 	/**
 	 * @return the remarques
@@ -294,18 +236,13 @@ public class Station {
 		return remarques;
 	}
 
-
-
-
 	/**
-	 * @param remarques the remarques to set
+	 * @param remarques
+	 *            the remarques to set
 	 */
 	public void setRemarques(String remarques) {
 		this.remarques = remarques;
 	}
-
-
-
 
 	/**
 	 * @return the etat
@@ -314,18 +251,13 @@ public class Station {
 		return etat;
 	}
 
-
-
-
 	/**
-	 * @param etat the etat to set
+	 * @param etat
+	 *            the etat to set
 	 */
 	public void setEtat(EtatStation etat) {
 		this.etat = etat;
 	}
-
-
-
 
 	/**
 	 * @return the type
@@ -334,15 +266,12 @@ public class Station {
 		return type;
 	}
 
-
-
-
 	/**
-	 * @param type the type to set
+	 * @param type
+	 *            the type to set
 	 */
 	public void setType(TypeStation type) {
 		this.type = type;
 	}
-	
-	
+
 }

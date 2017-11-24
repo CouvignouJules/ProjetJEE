@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+import ynovM.stockage.EtatStation;
+import ynovM.stockage.TypeStation;
+
 
 /**
  * @author Rémy
@@ -37,6 +40,8 @@ public class StationPOJO implements Serializable{
 	private int anemometre;
 	private int pluviometrie;
 	private String remarques;
+	private EtatStation etat;
+	private TypeStation type;
 	
 	public StationPOJO() {
 		super();
@@ -94,7 +99,7 @@ public class StationPOJO implements Serializable{
 		return hygrometrie;
 	}
 
-	public void setHygrometrie(double hygometrie) {
+	public void setHygrometrie(double hygrometrie) {
 		this.hygrometrie = hygrometrie;
 	}
 
@@ -129,6 +134,33 @@ public class StationPOJO implements Serializable{
 	public void setRemarques(String remarques) {
 		this.remarques = remarques;
 	}
-	
+
+	/**
+	 * @return the etat
+	 */
+	public EtatStation getEtat() {
+		return etat;
+	}
+
+	/**
+	 * @param etat the etat to set
+	 */
+	public void setEtat(EtatStation etat) {
+		this.etat = etat;
+	}
+
+	/**
+	 * @return the type
+	 */
+	public TypeStation getType() {
+		return type;
+	}
+
+	/**
+	 * @param type the type to set
+	 */
+	public void setType(TypeStation type) {
+		this.type = type;
+	}	
 	
 }
