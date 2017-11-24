@@ -1,4 +1,4 @@
-package ynovM.controleur;
+package ynovM.vue;
 
 import java.util.List;
 
