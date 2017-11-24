@@ -5,6 +5,13 @@ package ynovM.service;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
 
 /**
  * @author Rémy
@@ -25,7 +32,7 @@ public class StationPOJO implements Serializable{
 	private String nom;
 	private String localisation;
 	private double temperature;
-	private String hygometrie;
+	private double hygrometrie;
 	private int nebulosite;
 	private int anemometre;
 	private int pluviometrie;
@@ -83,12 +90,12 @@ public class StationPOJO implements Serializable{
 		this.temperature = temperature;
 	}
 
-	public String getHygometrie() {
-		return hygometrie;
+	public double getHygrometrie() {
+		return hygrometrie;
 	}
 
-	public void setHygometrie(String hygometrie) {
-		this.hygometrie = hygometrie;
+	public void setHygrometrie(double hygometrie) {
+		this.hygrometrie = hygrometrie;
 	}
 
 	public int getNebulosite() {
