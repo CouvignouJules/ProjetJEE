@@ -10,7 +10,7 @@ public class StationManagee {
 	private StationPOJO cp;
 	private Dao<StationPOJO> dao;
 	private int cle;
-	
+
 	/**
 	 * 
 	 */
@@ -20,18 +20,18 @@ public class StationManagee {
 		cp = null;
 		dao = null;
 	}
-	
+
 	/**
 	 * 
 	 * @param clef
 	 * @param d
 	 */
-	public StationManagee(int clef, Dao<StationPOJO> d)	{
+	public StationManagee(int clef, Dao<StationPOJO> d) {
 		cle = clef;
 		dao = d;
 		init();
 	}
-	
+
 	/**
 	 * 
 	 * @param p
@@ -43,7 +43,7 @@ public class StationManagee {
 		dao = d;
 		station = Conversion.pojoToCage(p);
 	}
-	
+
 	/**
 	 * 
 	 */
@@ -51,13 +51,13 @@ public class StationManagee {
 		cp = dao.lire(cle);
 		station = Conversion.pojoToCage(cp);
 	}
-	
+
 	/**
 	 * 
 	 */
 	@Override
 	public String toString() {
-		return String.join(" ", "id:",(""+cle),station.toString());
+		return String.join(" ", "id:", ("" + cle), station.toString());
 	}
 
 	public StationPOJO getPOJO() {
