@@ -41,7 +41,7 @@ public class StationManagee {
 		cle = p.getId();
 		cp = p;
 		dao = d;
-		station = Conversion.pojoToCage(p);
+		station = Conversion.pojoToStation(p);
 	}
 
 	/**
@@ -49,7 +49,7 @@ public class StationManagee {
 	 */
 	private void init() {
 		cp = dao.lire(cle);
-		station = Conversion.pojoToCage(cp);
+		station = Conversion.pojoToStation(cp);
 	}
 
 	/**
