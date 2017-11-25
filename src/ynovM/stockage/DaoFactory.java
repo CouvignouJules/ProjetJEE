@@ -47,7 +47,9 @@ public class DaoFactory {
 	 * @return une nouvelle DaoJPA
 	 */
 	public Dao<StationPOJO> getDao() {
-		return new DaoJPA();
+		//return new DaoJPA();
+		//Pour les tests
+		return new DaoDur();
 	}
 	
 	/**

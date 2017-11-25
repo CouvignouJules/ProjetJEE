@@ -55,8 +55,13 @@ public final class Manager {
 		}
 
 	}
-
-	public Manager getInstance() {
+	
+	//manager est un singleton
+	public static Manager getInstance() {
+		if(instance == null)
+		{
+			instance = new Manager();
+		}
 		return instance;
 	}
 

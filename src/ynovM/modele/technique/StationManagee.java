@@ -7,7 +7,7 @@ import ynovM.utilitaire.Conversion;
 
 public class StationManagee {
 	private Station station;
-	private StationPOJO cp;
+	private StationPOJO sp;
 	private Dao<StationPOJO> dao;
 	private int cle;
 
@@ -17,7 +17,7 @@ public class StationManagee {
 	public StationManagee() {
 		cle = -1;
 		station = null;
-		cp = null;
+		sp = null;
 		dao = null;
 	}
 
@@ -39,7 +39,7 @@ public class StationManagee {
 	 */
 	public StationManagee(StationPOJO p, Dao<StationPOJO> d) {
 		cle = p.getId();
-		cp = p;
+		sp = p;
 		dao = d;
 		station = Conversion.pojoToStation(p);
 	}
@@ -48,8 +48,8 @@ public class StationManagee {
 	 * 
 	 */
 	private void init() {
-		cp = dao.lire(cle);
-		station = Conversion.pojoToStation(cp);
+		sp = dao.lire(cle);
+		station = Conversion.pojoToStation(sp);
 	}
 
 	/**
@@ -61,7 +61,7 @@ public class StationManagee {
 	}
 
 	public StationPOJO getPOJO() {
-		return cp;
+		return sp;
 	}
 
 }

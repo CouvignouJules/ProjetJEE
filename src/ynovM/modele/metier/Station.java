@@ -19,7 +19,7 @@ public class Station {
 	private String nom;
 	private String localisation;
 	private double temperature;
-	private double hygometrie;
+	private double hygrometrie;
 	private int nebulosite;
 	private int anemometre;
 	private int pluviometrie;
@@ -42,7 +42,7 @@ public class Station {
 	 * @param nom
 	 * @param localisation
 	 * @param temperature
-	 * @param hygometrie
+	 * @param hygrometrie
 	 * @param nebulosite
 	 * @param anemometre
 	 * @param pluviometrie
@@ -50,7 +50,7 @@ public class Station {
 	 * @param etat
 	 * @param type
 	 */
-	public Station(int id, int x, int y, String nom, String localisation, double temperature, double hygometrie,
+	public Station(int id, int x, int y, String nom, String localisation, double temperature, double hygrometrie,
 			int nebulosite, int anemometre, int pluviometrie, String remarques) {
 		super();
 		this.id = id;
@@ -59,7 +59,7 @@ public class Station {
 		this.nom = nom;
 		this.localisation = localisation;
 		this.temperature = temperature;
-		this.hygometrie = hygometrie;
+		this.hygrometrie = hygrometrie;
 		this.nebulosite = nebulosite;
 		this.anemometre = anemometre;
 		this.pluviometrie = pluviometrie;
@@ -76,7 +76,7 @@ public class Station {
 	@Override
 	public String toString() {
 		return "Station [id=" + id + ", x=" + x + ", y=" + y + ", nom=" + nom + ", localisation=" + localisation
-				+ ", temperature=" + temperature + ", hygometrie=" + hygometrie + ", nebulosite=" + nebulosite
+				+ ", temperature=" + temperature + ", hygrometrie=" + hygrometrie + ", nebulosite=" + nebulosite
 				+ ", anemometre=" + anemometre + ", pluviometrie=" + pluviometrie + ", remarques=" + remarques
 				+ ", etat=" + etat + ", type=" + type + "]";
 	}
@@ -172,18 +172,18 @@ public class Station {
 	}
 
 	/**
-	 * @return the hygometrie
+	 * @return the hygrometrie
 	 */
-	public double getHygometrie() {
-		return hygometrie;
+	public double gethygrometrie() {
+		return hygrometrie;
 	}
 
 	/**
-	 * @param hygometrie
-	 *            the hygometrie to set
+	 * @param hygrometrie
+	 *            the hygrometrie to set
 	 */
-	public void setHygometrie(double hygometrie) {
-		this.hygometrie = hygometrie;
+	public void sethygrometrie(double hygrometrie) {
+		this.hygrometrie = hygrometrie;
 	}
 
 	/**
