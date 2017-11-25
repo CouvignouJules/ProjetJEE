@@ -14,5 +14,4 @@ public class PluviometreException extends Exception {
 	{
 		super(msg);
 	}
-
 }

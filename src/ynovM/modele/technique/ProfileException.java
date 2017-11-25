@@ -15,7 +15,7 @@ public class ProfileException extends Exception {
 
 	public ProfileException()
 	{
-		super("Ce type de profile n'est pas autorisé à faire ceci.");
+		super("Ce type de profil n'est pas autorisé à faire ceci.");
 	}
 	public ProfileException(String msg)
 	{
