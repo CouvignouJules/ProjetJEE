@@ -77,12 +77,34 @@ public final class Manager {
 		sm.redemarrer();
 	}
 
-	public void ajouter() {
-
+	//Ajout d'une nouvelle station autonome par defaut et avec un etat en marche
+	public void ajouter(int id, int x, int y, String nom, String localisation, double temperature, double hygrometrie,
+			int nebulosite, int anemometre, int pluviometrie, String remarques){
+		StationPOJO sp = new StationPOJO();
+		sp.setId(id);
+		sp.setX(x);
+		sp.setY(y);
+		sp.setNom(nom);
+		sp.setLocalisation(localisation);
+		sp.setTemperature(temperature);
+		sp.setHygrometrie(hygrometrie);
+		sp.setNebulosite(nebulosite);
+		sp.setAnemometre(anemometre);
+		sp.setPluviometrie(pluviometrie);
+		sp.setRemarques(remarques);
+		
+		lesStations.add(new StationManagee(sp, DaoFactory.getInstance().getDao()));
 	}
 
-	public void supprimer() {
-
+	//suppression d'une station avec l'id indiquer
+	public void supprimer(int id) {
+		StationManagee sm = null;
+		for (StationManagee a : lesStations) {
+			if(a.getPOJO().getId() == id) {
+				sm = a;
+			}
+		}
+		lesStations.remove(sm);
 	}
 	
 	public String getStationById(int id) throws StationException {
