@@ -10,6 +10,9 @@ import javax.naming.NamingException;
 
 import esclave.stockage.DaoRemote;
 import ynovM.stockage.DaoFactory;
+import ynovM.utilitaire.EtatStation;
+import ynovM.utilitaire.TypeStation;
+import ynovM.modele.technique.StationException;
 import ynovM.modele.technique.StationManagee;
 import ynovM.service.StationPOJO;
 
@@ -75,6 +78,65 @@ public final class Manager {
 
 	public void supprimer() {
 
+	}
+	
+	public String getStationById(int id) throws StationException {
+		String ret = "";
+		for (StationManagee a : lesStations) {
+			if (a.getPOJO().getId() == id)
+				ret = a.toString();
+		}
+		if (ret == "")
+			throw new StationException();
+		return ret;
+	}
+	
+	public List<String> getStationsByName(String name) throws StationException {
+		List<String> ret = null;
+		ret = new Vector<>();
+		for (StationManagee a : lesStations) {
+			if (a.getPOJO().getNom().toLowerCase() == name.toLowerCase())
+				ret.add(a.toString());
+		}
+		if (ret.isEmpty())
+			throw new StationException();
+		return ret;
+	}
+	
+	public List<String> getStationsByLocalisation(String localisation) throws StationException {
+		List<String> ret = null;
+		ret = new Vector<>();
+		for (StationManagee a : lesStations) {
+			if (a.getPOJO().getLocalisation().toLowerCase() == localisation.toLowerCase())
+				ret.add(a.toString());
+		}
+		if (ret.isEmpty())
+			throw new StationException();
+		return ret;
+	}
+	
+	public List<String> getStationsByEtat(EtatStation etat) throws StationException {
+		List<String> ret = null;
+		ret = new Vector<>();
+		for (StationManagee a : lesStations) {
+			if (a.getPOJO().getEtat() == etat)
+				ret.add(a.toString());
+		}
+		if (ret.isEmpty())
+			throw new StationException();
+		return ret;
+	}
+	
+	public List<String> getStationsByType(TypeStation type) throws StationException {
+		List<String> ret = null;
+		ret = new Vector<>();
+		for (StationManagee a : lesStations) {
+			if (a.getPOJO().getType() == type)
+				ret.add(a.toString());
+		}
+		if (ret.isEmpty())
+			throw new StationException();
+		return ret;
 	}
 
 	public List<String> getStations() {

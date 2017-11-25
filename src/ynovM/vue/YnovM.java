@@ -5,7 +5,8 @@ import java.util.List;
 import ynovM.controleur.Manager;
 import ynovM.modele.metier.Station;
 
-public class YnovM {	
+public class YnovM {
+
 	public void afficher() {
 		Manager.getInstance().getStations().forEach(System.out::println);
 	}
