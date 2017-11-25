@@ -63,5 +63,13 @@ public class StationManagee {
 	public StationPOJO getPOJO() {
 		return sp;
 	}
+	
+	public void redemarrer() throws StationException {
+		if(station != null)	{
+			station.redemarrer();
+			sp.setEtat(station.getEtat());
+			dao.update(cle, sp);
+		}		
+	}
 
 }

@@ -3,6 +3,7 @@
  */
 package ynovM.modele.metier;
 
+import ynovM.modele.technique.StationException;
 import ynovM.stockage.*;
 import ynovM.utilitaire.EtatStation;
 import ynovM.utilitaire.TypeStation;
@@ -66,6 +67,13 @@ public class Station {
 		this.remarques = remarques;
 		this.etat = EtatStation.EN_MARCHE;
 		this.type = TypeStation.AUTONOME;
+	}
+	
+	public void redemarrer() throws StationException {
+		if(this.getEtat() == EtatStation.EN_PANNE) {
+			throw new StationException("Impossible de redémarrer : la station est en panne");
+		}
+		this.setEtat(EtatStation.REDEMARRAGE);
 	}
 
 	/*

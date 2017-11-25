@@ -68,8 +68,13 @@ public final class Manager {
 		return instance;
 	}
 
-	public void redemarrer() {
-
+	public void redemarrer(int id) throws StationException {
+		StationManagee sm = null;
+		for (StationManagee a : lesStations) {
+			if(a.getPOJO().getId() == id)
+				sm = a;
+		}
+		sm.redemarrer();
 	}
 
 	public void ajouter() {
