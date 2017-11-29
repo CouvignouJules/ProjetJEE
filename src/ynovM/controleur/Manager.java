@@ -129,7 +129,7 @@ public final class Manager {
 		List<String> ret = null;
 		ret = new Vector<>();
 		for (StationManagee a : lesStations) {
-			if (a.getPOJO().getNom().toLowerCase() == name.toLowerCase())
+			if (a.getPOJO().getNom().toLowerCase().contentEquals(name.toLowerCase()))
 				ret.add(a.toString());
 		}
 		if (ret.isEmpty())
@@ -141,11 +141,11 @@ public final class Manager {
 		List<String> ret = null;
 		ret = new Vector<>();
 		for (StationManagee a : lesStations) {
-			if (a.getPOJO().getLocalisation().toLowerCase() == localisation.toLowerCase())
+			if (a.getPOJO().getLocalisation().toLowerCase().contentEquals(localisation.toLowerCase()))
 				ret.add(a.toString());
 		}
 		if (ret.isEmpty())
-			throw new StationException();
+			throw new StationException("Pas de station en "+localisation);
 		return ret;
 	}
 	

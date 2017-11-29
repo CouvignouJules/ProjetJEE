@@ -30,26 +30,26 @@ public class YnovM {
 		return Manager.getInstance().getStationById(id);
 	}
 	
-	public List<String> rechercherParNom(String name) throws StationException {
-		return Manager.getInstance().getStationsByName(name);
+	public void rechercherParNom(String name) throws StationException {
+		Manager.getInstance().getStationsByName(name).forEach(System.out::println);
 	}
 	
-	public List<String> rechercherParLoc(String loc) throws StationException {
-		return Manager.getInstance().getStationsByLocalisation(loc);
+	public void rechercherParLoc(String loc) throws StationException {
+		Manager.getInstance().getStationsByLocalisation(loc).forEach(System.out::println);
 	}
 	
-	public List<String> rechercherParEtat(EtatStation etat) throws StationException {
-		return Manager.getInstance().getStationsByEtat(etat);
+	public void rechercherParEtat(EtatStation etat) throws StationException {
+		Manager.getInstance().getStationsByEtat(etat).forEach(System.out::println);
 	}
 	
-	public List<String> rechercherParType(TypeStation type) throws StationException {
-		return Manager.getInstance().getStationsByType(type);
+	public void rechercherParType(TypeStation type) throws StationException {
+		Manager.getInstance().getStationsByType(type).forEach(System.out::println);
 	}
 	
 	public static void main(String[] args) throws StationException {
 		YnovM z = null;
 		z = new YnovM();
-					
+		
 		System.out.println("-------------AFFICHAGE---------------");
 		z.afficher();
 		System.out.println("----------------SUPPRIMER-------------");
@@ -63,5 +63,20 @@ public class YnovM {
 		System.out.println("---------------APRES AJOUT-------------");
 		z.afficher();		
 		System.out.println("-----------------------------");
+		System.out.println("-------------AVANT REDEMARRER----------------");
+		z.redemarrer(1);
+		System.out.println("--------------APRES REDEMARRER--------------");
+		z.afficher();
+		System.out.println("------------RECHERCHE PAR ID-----------------");
+		System.out.println(z.rechercherParID(1));
+		System.out.println("-----------RECHERCHE PAR ETAT------------------");
+		z.rechercherParEtat(EtatStation.EN_MARCHE);
+		System.out.println("-----------------------------");
+		z.rechercherParType(TypeStation.AUTONOME);
+		System.out.println("-----------------------------");
+		z.rechercherParLoc("Lille");
+		System.out.println("-----------------------------");
+		z.rechercherParNom("Marseille");
+		
 	}
 }

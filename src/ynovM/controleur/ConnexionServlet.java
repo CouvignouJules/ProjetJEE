@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class ConnexionServlet
  */
-@WebServlet({ "/ConnexionServlet", "connexion" })
+@WebServlet({ "ConnexionServlet", "connexion" })
 public class ConnexionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
