@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 import ynovM.service.StationPOJO;
+import ynovM.utilitaire.DaoEnum;
 
 /**
  * 
@@ -46,8 +47,15 @@ public class DaoFactory {
 	 * 
 	 * @return une nouvelle DaoJPA
 	 */
-	public Dao<StationPOJO> getDao() {
-		return new DaoJPA();
+	public Dao<StationPOJO> getDao(DaoEnum dao) {
+	    switch(dao) {
+	        case DUR  :
+	            return new DaoDur();
+	        case JPA  :
+	            return new DaoJPA();
+	        default : 
+	            return new DaoJPA();
+	    }
 	}
 	
 	/**

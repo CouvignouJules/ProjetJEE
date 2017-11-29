@@ -10,6 +10,7 @@ import javax.naming.NamingException;
 
 import esclave.stockage.DaoRemote;
 import ynovM.stockage.DaoFactory;
+import ynovM.utilitaire.DaoEnum;
 import ynovM.utilitaire.EtatStation;
 import ynovM.utilitaire.TypeStation;
 import ynovM.modele.technique.StationException;
@@ -28,9 +29,9 @@ public final class Manager {
 
 	private void init() {
 		List<StationPOJO> tmp = null;
-		tmp = DaoFactory.getInstance().getDao().lireTous();
+		tmp = DaoFactory.getInstance().getDao(DaoEnum.JPA).lireTous();
 		for (StationPOJO cp : tmp) {
-			lesStations.add(new StationManagee(cp, DaoFactory.getInstance().getDao()));
+			lesStations.add(new StationManagee(cp, DaoFactory.getInstance().getDao(DaoEnum.JPA)));
 		}
 	}
 
@@ -95,7 +96,7 @@ public final class Manager {
 		sp.setEtat(EtatStation.EN_MARCHE);
 		sp.setType(type);
 		
-		lesStations.add(new StationManagee(sp, DaoFactory.getInstance().getDao()));
+		lesStations.add(new StationManagee(sp, DaoFactory.getInstance().getDao(DaoEnum.JPA)));
 		lesStations.lastElement().ajouter(sp);
 	}
 
