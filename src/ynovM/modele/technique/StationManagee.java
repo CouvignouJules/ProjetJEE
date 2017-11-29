@@ -71,5 +71,17 @@ public class StationManagee {
 			dao.update(cle, sp);
 		}		
 	}
+	
+	public void supprimer() {
+		if(station != null){
+			dao.effacer(cle);
+			station = null;
+		}
+	}
 
+	public void ajouter(StationPOJO sp) {
+		if(station != null) {
+			dao.inserer(sp);
+		}		
+	}
 }

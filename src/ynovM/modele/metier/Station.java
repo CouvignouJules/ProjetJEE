@@ -52,7 +52,7 @@ public class Station {
 	 * @param type
 	 */
 	public Station(int id, int x, int y, String nom, String localisation, double temperature, double hygrometrie,
-			int nebulosite, int anemometre, int pluviometrie, String remarques) {
+			int nebulosite, int anemometre, int pluviometrie, String remarques, TypeStation type) {
 		super();
 		this.id = id;
 		this.x = x;
@@ -66,7 +66,7 @@ public class Station {
 		this.pluviometrie = pluviometrie;
 		this.remarques = remarques;
 		this.etat = EtatStation.EN_MARCHE;
-		this.type = TypeStation.AUTONOME;
+		this.type = type;
 	}
 	
 	public void redemarrer() throws StationException {

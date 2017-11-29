@@ -58,7 +58,9 @@ public class DaoJPA implements Dao<StationPOJO> {
 	 */
 	@Override
 	public void inserer(StationPOJO elt) {
+		em.getTransaction().begin();
 		em.persist(elt);
+		em.getTransaction().commit();
 	}
 	
 	/**
@@ -69,8 +71,10 @@ public class DaoJPA implements Dao<StationPOJO> {
 	@Override
 	public void effacer(int cle) {
 		StationPOJO tmp = null;
+		em.getTransaction().begin();
 		tmp = em.find(StationPOJO.class, cle);
 		em.remove(tmp);
+		em.getTransaction().commit();
 	}
 	
 	@Override
