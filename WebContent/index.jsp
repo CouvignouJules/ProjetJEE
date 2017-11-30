@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Bienvenue DANS le ZOO</title>
+<title>Météo ynov</title>
 <link rel="stylesheet" type="text/css" href="style.css"></link>
 </head>
 <body>
