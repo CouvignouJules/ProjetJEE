@@ -13,6 +13,8 @@ import ynovM.stockage.DaoFactory;
 import ynovM.utilitaire.DaoEnum;
 import ynovM.utilitaire.EtatStation;
 import ynovM.utilitaire.TypeStation;
+import ynovM.service.Compte;
+import ynovM.modele.technique.ConnexionExeption;
 import ynovM.modele.technique.StationException;
 import ynovM.modele.technique.StationManagee;
 import ynovM.service.StationPOJO;
@@ -20,7 +22,8 @@ import ynovM.service.StationPOJO;
 public final class Manager {
 	private static Manager instance = null;
 	private Vector<StationManagee> lesStations;
-
+	private Compte utilisateur;
+	
 	private Manager() {
 		lesStations = new Vector<>();
 		init();
@@ -117,8 +120,10 @@ public final class Manager {
 	public String getStationById(int id) throws StationException {
 		String ret = "";
 		for (StationManagee a : lesStations) {
-			if (a.getPOJO().getId() == id)
+			if (a.getPOJO().getId() == id) {
+				a.checkEtatStation();
 				ret = a.toString();
+			}				
 		}
 		if (ret == "")
 			throw new StationException();
@@ -129,8 +134,10 @@ public final class Manager {
 		List<String> ret = null;
 		ret = new Vector<>();
 		for (StationManagee a : lesStations) {
-			if (a.getPOJO().getNom().toLowerCase().contentEquals(name.toLowerCase()))
+			if (a.getPOJO().getNom().toLowerCase().contentEquals(name.toLowerCase())) {
+				a.checkEtatStation();
 				ret.add(a.toString());
+			}				
 		}
 		if (ret.isEmpty())
 			throw new StationException();
@@ -141,8 +148,10 @@ public final class Manager {
 		List<String> ret = null;
 		ret = new Vector<>();
 		for (StationManagee a : lesStations) {
-			if (a.getPOJO().getLocalisation().toLowerCase().contentEquals(localisation.toLowerCase()))
+			if (a.getPOJO().getLocalisation().toLowerCase().contentEquals(localisation.toLowerCase())) {
+				a.checkEtatStation();
 				ret.add(a.toString());
+			}				
 		}
 		if (ret.isEmpty())
 			throw new StationException("Pas de station en "+localisation);
@@ -153,8 +162,10 @@ public final class Manager {
 		List<String> ret = null;
 		ret = new Vector<>();
 		for (StationManagee a : lesStations) {
-			if (a.getPOJO().getEtat() == etat)
+			if (a.getPOJO().getEtat() == etat) {
+				a.checkEtatStation();
 				ret.add(a.toString());
+			}				
 		}
 		if (ret.isEmpty())
 			throw new StationException();
@@ -165,8 +176,10 @@ public final class Manager {
 		List<String> ret = null;
 		ret = new Vector<>();
 		for (StationManagee a : lesStations) {
-			if (a.getPOJO().getType() == type)
+			if (a.getPOJO().getType() == type) {
+				a.checkEtatStation();
 				ret.add(a.toString());
+			}				
 		}
 		if (ret.isEmpty())
 			throw new StationException();
@@ -177,6 +190,7 @@ public final class Manager {
 		List<String> ret = null;
 		ret = new Vector<>();
 		for (StationManagee a : lesStations) {
+			a.checkEtatStation();
 			ret.add(a.toString());
 		}
 		return ret;
@@ -190,4 +204,28 @@ public final class Manager {
 		}
 		return ret;
 	}
+	
+	public void connexion(String login, String password) {
+        List<Compte> tmp = null;
+        
+        tmp = DaoFactory.getInstance().getDaoCompte().lireTous();
+        for (Compte c : tmp) {
+            if(c.getlogin().equals(login) && c.getmdp().equals(password))
+                setUtilisateur(new Compte(c.getlogin(),c.getmdp(),c.getProfile().getProfile()));
+        }
+        if (this.utilisateur == null)
+            try {
+                throw new ConnexionExeption();
+            } catch (ConnexionExeption e) {
+                e.printStackTrace();
+            }
+    }
+
+    public Compte getUtilisateur() {
+        return utilisateur;
+    }
+
+    public void setUtilisateur(Compte utilisateur) {
+        this.utilisateur = utilisateur;
+    }
 }

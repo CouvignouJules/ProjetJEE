@@ -3,6 +3,8 @@
  */
 package ynovM.modele.metier;
 
+import java.util.Date;
+
 import ynovM.modele.technique.StationException;
 import ynovM.stockage.*;
 import ynovM.utilitaire.EtatStation;
@@ -27,6 +29,7 @@ public class Station {
 	private String remarques;
 
 	private EtatStation etat;
+	private long h_restart;
 	private TypeStation type;
 
 	/**
@@ -49,6 +52,7 @@ public class Station {
 	 * @param pluviometrie
 	 * @param remarques
 	 * @param etat
+	 * @param h_restart
 	 * @param type
 	 */
 	public Station(int id, int x, int y, String nom, String localisation, double temperature, double hygrometrie,
@@ -73,7 +77,8 @@ public class Station {
 		if(this.getEtat() == EtatStation.EN_PANNE) {
 			throw new StationException("Impossible de redémarrer : la station est en panne");
 		}
-		this.setEtat(EtatStation.REDEMARRAGE);
+		this.h_restart = System.currentTimeMillis() + 10000;
+		this.setEtat(EtatStation.REDEMARRAGE);		
 	}
 
 	/*
@@ -258,6 +263,9 @@ public class Station {
 	 * @return the etat
 	 */
 	public EtatStation getEtat() {
+		if((etat == EtatStation.REDEMARRAGE) && (System.currentTimeMillis() >= (h_restart))) {
+			etat = EtatStation.EN_MARCHE;
+		}
 		return etat;
 	}
 

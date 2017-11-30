@@ -6,7 +6,7 @@ package ynovM.utilitaire;
  *
  */
 public enum DaoEnum {
-	DUR(0), JPA(1);
+	DUR(0), JPA(1), COMPTE(2);
 	private int DaoEnum;
 	
 	public int getDaoEnum() {

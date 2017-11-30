@@ -46,37 +46,49 @@ public class YnovM {
 		Manager.getInstance().getStationsByType(type).forEach(System.out::println);
 	}
 	
-	public static void main(String[] args) throws StationException {
+	private void connect(String login, String mdp) {
+        Manager.getInstance().connexion(login,mdp);
+        System.out.println(Manager.getInstance().getUtilisateur().toString());
+    }
+	
+	public static void main(String[] args) throws StationException, InterruptedException {
 		YnovM z = null;
 		z = new YnovM();
 		
+		z.connect("admin","admin");
 		System.out.println("-------------AFFICHAGE---------------");
 		z.afficher();
-		System.out.println("----------------SUPPRIMER-------------");
+		System.out.println("----------------SUPPRIMER-------------");		
 		z.supprimer(1);
-		z.supprimer(6);
+		z.supprimer(2);
 		System.out.println("------------------APRES SUPPRIMER-----------");
 		z.afficher();
 		System.out.println("-------------AJOUT---------------");
 		z.ajout(1, 7, 8, "AlphaStation", "Bretagne", 17, 4, 5, 8, 7, "RAS", TypeStation.AUTONOME);
-		z.ajout(6, 7, 8, "BetaStation", "Bretagne", 17, 4, 5, 8, 7, "RAS", TypeStation.ESCLAVE);
+		z.ajout(2, 7, 8, "BetaStation", "Aix", 17, 4, 5, 8, 7, "RAS", TypeStation.ESCLAVE);
+		//z.ajout(3, 7, 8, "CharlieStation", "Marseille", 17, 4, 5, 8, 7, "RAS", TypeStation.AUTONOME);
+		//z.ajout(4, 7, 8, "DeltaStation", "Paris", 17, 4, 5, 8, 7, "RAS", TypeStation.ESCLAVE);
 		System.out.println("---------------APRES AJOUT-------------");
 		z.afficher();		
 		System.out.println("-----------------------------");
 		System.out.println("-------------AVANT REDEMARRER----------------");
 		z.redemarrer(1);
+		z.redemarrer(2);
 		System.out.println("--------------APRES REDEMARRER--------------");
 		z.afficher();
 		System.out.println("------------RECHERCHE PAR ID-----------------");
 		System.out.println(z.rechercherParID(1));
 		System.out.println("-----------RECHERCHE PAR ETAT------------------");
 		z.rechercherParEtat(EtatStation.EN_MARCHE);
-		System.out.println("-----------------------------");
+		System.out.println("-------------RECHERCHE PAR TYPE----------------");
 		z.rechercherParType(TypeStation.AUTONOME);
-		System.out.println("-----------------------------");
-		z.rechercherParLoc("Lille");
-		System.out.println("-----------------------------");
-		z.rechercherParNom("Marseille");
-		
+		System.out.println("---------------RECHERHCE PAR LOC--------------");
+		z.rechercherParLoc("Paris");
+		System.out.println("-------------RECHERHCE PAR NOM----------------");
+		z.rechercherParNom("CharlieStation");
+		System.out.println("-------------SLEEP (15s) ET VERIF STATION REDEMARRAGE---------------");
+		System.out.println("WAIT PLEASE");
+		Thread.sleep(15000);
+		z.afficher();
 	}
 }

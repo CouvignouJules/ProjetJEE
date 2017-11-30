@@ -4,6 +4,7 @@ import ynovM.modele.metier.Station;
 import ynovM.service.StationPOJO;
 import ynovM.stockage.Dao;
 import ynovM.utilitaire.Conversion;
+import ynovM.utilitaire.EtatStation;
 
 public class StationManagee {
 	private Station station;
@@ -70,6 +71,13 @@ public class StationManagee {
 			sp.setEtat(station.getEtat());
 			dao.update(cle, sp);
 		}		
+	}
+	
+	public void checkEtatStation() {
+		if(station != null)	{
+			sp.setEtat(station.getEtat());
+			dao.update(cle, sp);
+		}	
 	}
 	
 	public void supprimer() {

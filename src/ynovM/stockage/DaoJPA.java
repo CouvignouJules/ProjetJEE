@@ -79,7 +79,9 @@ public class DaoJPA implements Dao<StationPOJO> {
 	
 	@Override
 	public void update(int index, StationPOJO obj) {
+		em.getTransaction().begin();
 		update(obj);
+		em.getTransaction().commit();
 	}
 	
 	/**

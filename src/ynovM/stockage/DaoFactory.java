@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
+import ynovM.service.Compte;
 import ynovM.service.StationPOJO;
 import ynovM.utilitaire.DaoEnum;
 
@@ -81,4 +82,7 @@ public class DaoFactory {
 		return ret;
 	}
 	
+	public Dao<Compte> getDaoCompte() {
+        return new DaoCompte();
+	}
 }
